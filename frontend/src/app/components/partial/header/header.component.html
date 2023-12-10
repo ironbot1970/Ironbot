@@ -1,0 +1,27 @@
+<header>
+    <div class="container">
+        <a routerLink="/" class="logo">
+            <img src="assets/IronBotLogo.png" alt="IronBot" class="IronBotLogo">
+        </a>
+        <nav>
+            <ul class="topmargin10">
+                <li>
+                    <a routerLink="/login">Login</a>
+                </li>
+                <li class="menu-container">
+                    <a routerLink="/dashboard">Peter</a>
+                    <div class="menu">
+                        <a routerLink="/profile">Profile</a>
+                        <a routerLink="/orders">Orders</a>
+                        <a>Logout</a>
+                    </div>
+                </li>
+                <li>
+                    <a routerLink="/cart-page">
+                        Cart <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
