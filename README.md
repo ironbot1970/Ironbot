@@ -28,11 +28,6 @@ npm install -g @angular/cli@16.2.0
 ng serve -o
 ```
 
-```
-peter@eagle-nest ~/Dev/IronBot_Angular/frontend [main] 
-: ng serve -o
-```
-
 Használt NodeJS és Angular verziók:
 ```
 npm version
@@ -77,10 +72,7 @@ Package                      Version
 @angular-devkit/schematics   16.2.0 (cli-only)
 @schematics/angular          16.2.0 (cli-only)   
 ```
-Projekt klónozása ('main' branch):
-```
-git clone https://github.com/KiralyPeter/IronBot_Angular.git
-```
+
 Lokál repozitori szinkronizálása a GitHub-on lévő verzióval 
 (arra az esetre, ha a GitHub-on lévő verzió idő közben változott volna..)
 ```
