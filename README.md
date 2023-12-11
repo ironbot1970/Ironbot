@@ -16,6 +16,14 @@ src/data.ts - "dummy" adatbázis a frontend fejlesztéshez
 **A Git repo az IronBot_Angular könyvtárra van inicializálvba! Később a backend-nek külön könyvtára lesz.**
 
 **Az angular szioláltatást a fejlesztés jelen állapotában a frontend könyvtárból kell indítani. Pl.:**
+
+Beüzemelés:
+```
+git clone {git repo url}
+npm install -y
+npm install -g @angular/cli@16.2.0
+```
+
 ```
 peter@eagle-nest ~/Dev/IronBot_Angular/frontend [main] 
 : ng serve -o
