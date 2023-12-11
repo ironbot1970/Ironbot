@@ -22,6 +22,10 @@ Beüzemelés:
 git clone {git repo url}
 npm install -y
 npm install -g @angular/cli@16.2.0
+
+// A /frontend könytárban kell elindítani:
+
+ng serve -o
 ```
 
 ```
