@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 public class RobotRepository : IRobotRepository
 {
-    private readonly ironbot1970Context _context;
+    private readonly IronBotDBContext _context;
 
-    public RobotRepository(ironbot1970Context context)
+    public RobotRepository(IronBotDBContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }

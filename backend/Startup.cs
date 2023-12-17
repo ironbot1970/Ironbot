@@ -36,7 +36,7 @@ namespace irobotservice
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "irobotservice", Version = "v1" });
             });
 
-            services.AddDbContext<ironbot1970Context>();
+            services.AddDbContext<IronBotDBContext>();
             services.AddScoped<IRobotRepository, RobotRepository>();
         }
     
