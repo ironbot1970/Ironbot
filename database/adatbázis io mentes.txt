@@ -1,0 +1,94 @@
+/*
+  IronBot DB Plan v1.5
+  
+  It is written in DBML (Database Modelling Language)
+  So you can generate SQL script with free tools 
+  directly using this script :-) pappzoo
+*/
+
+Table Users as "Users" {
+  Id integer [pk, increment, not null, unique]
+  Username nvarchar(50) [not null]
+  PasswordHash nvarchar(100) [not null, note: 'MD5 hashed pswd']
+  PasswordSalt nvarchar(100) [not null, note: 'MD5 hash-salt']
+  Email nvarchar(50) [not null]
+  Phone nvarchar(20) 
+  Mobile nvarchar(20) [not null]
+  FirstName nvarchar(50) [not null]
+  LastName nvarchar(50) [not null]
+  Country nvarchar(50) [not null]
+  City nvarchar(30) [not null]
+  Zip nvarchar(5) [not null]
+  Address nvarchar(50) [not null]
+  BillingAddressId integer [default: null, ref: > BillingAddresses.Id]
+  Status int [not null, default: 0, note: '0: Validating, 1: Enabled, 2: Deleted']
+  IsValidated bit [not null, default: 0]
+  ValidationUrl nvarchar(250) [not null]
+  IsAdmin bit [not null, default: 0]
+  TimeStamp timestamp [not null, default: 'now()']
+}
+
+Table BillingAddresses as "BillingAddresses" {
+  Id integer [pk, increment, not null, unique]
+  FullName nvarchar(100) [not null]
+  VATNumber nvarchar(20)
+  Country nvarchar(50) [not null]
+  City nvarchar(30) [not null]
+  Zip nvarchar(5) [not null]
+  Address nvarchar(50) [not null]
+}
+
+Table Robots as "Robots" {
+  Id integer [pk, increment, not null, unique]
+  Name nvarchar(50) [not null]
+  Description text [default: null]
+  ThumbnailUrl nvarchar(250) [default: null]
+  PhotoUrl nvarchar(250) [default: null]
+  CategoryId nvarchar(50) [not null, ref: > Categories.Id]
+  Manufacturer nvarchar(50) [default: null]
+  ManufactureYear integer [default: null]
+  RentalFee decimal [not null]
+  Deposit decimal [not null]
+  Status int [not null, default: 0, note: '0: Available, 1: OutOfOrder, 2: NotAvailable, 3: Retired']
+}
+
+Table Categories as "Categories" {
+  Id integer [pk, increment, not null, unique]
+  Name nvarchar(50) [not null, note: '0: Vacuum cleaner, 1: Drone, ..., 1000: Other']
+  Description text [default: null]
+  ImageUrl nvarchar(250) [default: null]
+  IsDeleted bit [not null, default: 0]
+}
+
+// Stores rentals temorary. Once payment is successful 
+// all items in the cart should go to Rentals table 
+// with the same RentalGroup id
+Table Cart as "Cart" {
+  Id integer [pk, increment, not null, unique]
+  UserId integer [not null, ref: > Users.Id]
+  RobotId integer [not null, ref: > Robots.Id]
+  StartDate date [not null]
+  EndDate date [not null]
+  TimeStamp timestamp [not null, default: 'now()']
+}
+
+// Stores rentals permanently
+Table Rentals as "Rentals" {
+  Id integer [pk, increment, not null, unique]
+  RentalGroup nvarchar(25) [not null, note: 'Generated from timestamp, should be the same on records in one rental transaction']
+  UserId integer [not null, ref: > Users.Id]
+  RobotId integer [not null, ref: > Robots.Id]
+  StartDate date [not null]
+  EndDate date [not null]
+  RentalFee decimal [not null]
+  RentalDeposit decimal [not null]
+  RentalTotalAmount decimal [not null]
+  IsDepositPaid bit [not null, default: 0]
+  IsRentalTotalAmountPaid bit [not null, default: 0]
+  IsDepositRefunded bit [not null, default: 0]
+  Status integer [not null, default: 0, note: '0: Open, 1: Closed, 2: Cancelled']
+  TimeStamp timestamp [not null, default: 'now()']
+}
+
+
+
