@@ -1,0 +1,56 @@
+# Visual Studio 2019 konkrét .gitignore beállítások
+
+## Projektek
+.vs2019/
+*_i.c/
+*_p.c/
+*_i.h/
+*_p.h/
+*.suo
+*.sdf
+*.opensdf
+*.DB.sdf
+*.dbmdl
+*.dbproj.schemaview
+*.pfx
+*.publishsettings
+node_modules/
+
+## Követési fájlok
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Fordítási fájlok
+bin/
+obj/
+
+## Unit Test fájlok
+TestResults/
+
+## Verziókezeléshez szükséges fájlok
+[Tt]humbs.db
+*.log
+
+## Resharper fájlok
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings
+
+## Microsoft Team Foundation Server
+$tf/
+
+## Nem engedélyezett verziókezelési fájlok
+*.scc
+
+## törlésére váró fájlok
+*.bak
+*.user
+
+## ReSharper törlésére váró fájlok
+_ReSharper*/
+*.suo
+*.user
+*.sln.docstates
