@@ -24,16 +24,46 @@ namespace irobotservice.Controllers
         }
 
         [HttpGet]
+        [Route("GetAllRobots")]
+        public ActionResult<IEnumerable<Robot>> GetAllRobots()
+        {
+            var robots = _robotRepository.GetAllRobots();
+            return Ok(robots);
+        }
+
+        [HttpGet]
         [Route("GetRobotsByCategoryId")]
         public ActionResult<IEnumerable<Robot>> GetRobotsByCategoryId(int categoryId)
         {
-            var robot = _robotRepository.GetRobotsByCategoryId(categoryId);
-            if (robot == null)
+            var robots = _robotRepository.GetRobotsByCategoryId(categoryId);
+            if (robots == null)
             {
                 return NotFound();
             }
 
-            return Ok(robot);
+            return Ok(robots);
+        }
+
+        [HttpPost]
+        [Route("CreateRobot")]
+        public ActionResult<bool> CreateRobot([FromBody] Robot robot)
+        {
+            var result = _robotRepository.CreateRobot(robot);
+            if (result)
+                return Ok(result);
+            else
+                return NotFound();
+        }
+
+        [HttpDelete]
+        [Route("DeleteRobot")]
+        public ActionResult<bool> DeleteRobot(int robotId)
+        {
+            var result = _robotRepository.DeleteRobot(robotId);
+            if (result)
+                return Ok(result);
+            else
+                return NotFound();
         }
     }
 }
