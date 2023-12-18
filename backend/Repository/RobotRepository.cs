@@ -36,6 +36,34 @@ public class RobotRepository : IRobotRepository
         return _context.Robots.Find(robotId);
     }
 
+    public bool CreateRobot(Robot robot)
+    {
+        try
+        {
+            _context.Robots.Add(robot);
+            _context.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public bool DeleteRobot(int robotId)
+    {
+        try
+        {
+            _context.Robots.Remove(_context.Robots.FirstOrDefault(r => r.Id == robotId));
+            _context.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
     public async Task<User> GetUserByEmailAndPasswordAsync(string email, string password)
     {
         var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
@@ -92,4 +120,5 @@ public class RobotRepository : IRobotRepository
 
         return true;
     }
+
 }
