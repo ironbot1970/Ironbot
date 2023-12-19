@@ -5,6 +5,9 @@ using irobotservice.Models;
 public interface IRobotRepository
 {
     IEnumerable<Category> GetCategories();
+    bool CreateCategory(Category category);
+    bool DeleteCategory(int categoryId);
+
     IEnumerable<Robot> GetAllRobots();
     IEnumerable<Robot> GetRobotsByCategoryId(int categoryId);
     Robot GetRobotById(int robotId);

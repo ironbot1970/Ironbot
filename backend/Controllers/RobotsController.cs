@@ -16,14 +16,6 @@ namespace irobotservice.Controllers
         }
 
         [HttpGet]
-        [Route("GetCategories")]
-        public ActionResult<IEnumerable<Category>> GetCategories()
-        {
-            var categories = _robotRepository.GetCategories();
-            return Ok(categories);
-        }
-
-        [HttpGet]
         [Route("GetAllRobots")]
         public ActionResult<IEnumerable<Robot>> GetAllRobots()
         {

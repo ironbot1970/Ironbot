@@ -14,10 +14,44 @@ public class RobotRepository : IRobotRepository
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
 
+    #region Category
+
     public IEnumerable<Category> GetCategories()
     {
         return _context.Categories.ToList();
     }
+
+    public bool CreateCategory(Category category)
+    {
+        try
+        {
+            _context.Categories.Add(category);
+            _context.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    public bool DeleteCategory(int categoryId)
+    {
+        try
+        {
+            _context.Categories.Remove(_context.Categories.FirstOrDefault(r => r.Id == categoryId));
+            _context.SaveChanges();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
+    }
+
+    #endregion
+
+    #region Robots
 
     public IEnumerable<Robot> GetAllRobots()
     {
@@ -63,6 +97,10 @@ public class RobotRepository : IRobotRepository
             return false;
         }
     }
+
+    #endregion
+
+    #region Users
 
     public async Task<User> GetUserByEmailAndPasswordAsync(string email, string password)
     {
@@ -121,4 +159,5 @@ public class RobotRepository : IRobotRepository
         return true;
     }
 
+    #endregion
 }
