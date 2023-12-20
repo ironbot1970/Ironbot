@@ -8,23 +8,28 @@ import { Robot } from 'src/app/shared/models/Robot';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
-  
-  robots:Robot[] = [];
-  constructor(private robotService:RobotService, activatedRoute:ActivatedRoute){
+export class HomeComponent implements OnInit {
+  robots: Robot[] = [];
+
+  constructor(private robotService: RobotService, activatedRoute: ActivatedRoute) {
     activatedRoute.params.subscribe((params) => {
-      if(params.searchTerm)
+      if (params.searchTerm)
         this.robots = this.robotService.getAllRobotsBySearchTerm(params.searchTerm);
-      else if(params.tag)
+      else if (params.tag)
         this.robots = this.robotService.getAllRobotsByTag(params.tag);
       else
         this.robots = robotService.getAll();
-    })
-    
-  }
-  
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
+    });
   }
 
+  onSortChange(event: Event): void {
+    const value = (event.target as HTMLSelectElement)?.value;
+    if (value) {
+      const sortOrder: 'asc' | 'desc' = value as 'asc' | 'desc';
+      this.robots = this.robotService.getAllRobotsByPrice(sortOrder === 'asc');
+    }
+  }
+
+  ngOnInit(): void { 
+  }
 }
