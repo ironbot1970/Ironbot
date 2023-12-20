@@ -6,7 +6,21 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-
+.sort-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .sort-dropdown span {
+    margin-right: 10px;
+  }
+  
+  .sort-dropdown select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
 li a {
     height: 22.5rem;
     width: 20rem;
@@ -82,3 +96,27 @@ li a img{
     margin-top: 0.7rem;
     font-size: 1.1rem;
 }
+#sort {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px; 
+  }
+  
+  #sort label {
+    margin-right: 10px; 
+  }
+  
+  #sort select {
+    padding: 0.3rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 10rem;
+    font-weight: 600;
+    color: blue;
+    cursor: pointer;
+  }
+  
+  #sort select:hover {
+    background-color: black;
+    color: white;
+  }

@@ -4,6 +4,15 @@
     [visible]="!robots || !robots.length"
     resetLinkText = "Reset Search">    
 </app-not-found>
+
+<div id="sort">
+    <label for="sortOrder">Sort by Price:</label>
+    <select id="sortOrder" (change)="onSortChange($event)">
+      <option value="asc">Low to High</option>
+      <option value="desc">High to Low</option>
+    </select>
+  </div>
+  
 <ul>
     <li *ngFor="let robot of robots">
         <a routerLink="/robot/{{robot.id}}">

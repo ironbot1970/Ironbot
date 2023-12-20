@@ -8,10 +8,25 @@ header{
 a{
     color: #af1313;
 }
+ul a {
+    padding: 1rem;
+    display: inline-block;
+    background-color: #4e88e5; 
+    color: white; 
+    border-radius: 0.5rem; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease; 
+
+    margin-right: 10px; 
+}
+
+ul a:hover {
+    background-color: #3463ad;
+}
 
 a:hover{
     background: none;
-    color: white;
+    color: green;
     cursor: pointer;
 }
 
@@ -71,4 +86,34 @@ a span{
 
 .topmargin10 {
     margin-top: 10px;
+}
+.menu{
+    background-color: white;
+}
+.menu a {
+    margin-top: 3px;
+    width: 100%;
+    min-width: 8rem;
+    padding: 1rem;
+    display: block;
+    color: #333; 
+    text-decoration: none; 
+    transition: background-color 0.3s ease;
+}
+
+.menu a:hover {
+    background-color: #f0f0f0; 
+}
+
+.menu a:not(:last-child) {
+    border-bottom: 1px solid #ddd; 
+}
+
+.menu a span {
+    margin-left: 5px; 
+}
+
+
+.menu a {
+    font-size: 14px;
 }
